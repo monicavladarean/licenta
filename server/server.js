@@ -1,19 +1,40 @@
-var express = require("express")
-var db = require("./database.js")
-var app = express()
+var express = require("express");
+bodyParser = require("body-parser");
+//const cors = require("cors");
+var db = require("./databaseInitialisation.js");
+var StaffRepository = require("./repositories/StaffRepository.js");
 
-var HTTP_PORT = 8080 
+var app = express();
+
+//var corsOptions =
+//{
+//    origin: "http://localhost:8081"
+// };
+//app.use(cors(corsOptions));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+var HTTP_PORT = 8080;
 app.listen(HTTP_PORT, () => {
-    console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
+  console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT));
 });
 
 app.get("/", (req, res, next) => {
-    res.json({"message":"Server is working"})
+  res.json({ message: "Server is working" });
 });
 
-// Insert other API endpoints
+//require("./routes/routes")(app);
 
-// Default response for any other request
-app.use(function(req, res){
-    res.status(404);
+app.get("/test", (req, res, next) => {
+  var staffRepository = new StaffRepository();
+
+  (async () => {
+    var array = new Array(await staffRepository.getStaff());
+    res.json(JSON.stringify(array));
+  })();
+});
+
+app.use(function (req, res) {
+  res.status(404);
 });
