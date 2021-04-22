@@ -2,7 +2,6 @@ var express = require("express");
 bodyParser = require("body-parser");
 //const cors = require("cors");
 var db = require("./databaseInitialisation.js");
-var StaffRepository = require("./repositories/StaffRepository.js");
 
 var app = express();
 
@@ -24,16 +23,7 @@ app.get("/", (req, res, next) => {
   res.json({ message: "Server is working" });
 });
 
-//require("./routes/routes")(app);
-
-app.get("/test", (req, res, next) => {
-  var staffRepository = new StaffRepository();
-
-  (async () => {
-    var array = new Array(await staffRepository.getStaff());
-    res.json(JSON.stringify(array));
-  })();
-});
+var staffRoutes = require("./routes/StaffRoutes")(app);
 
 app.use(function (req, res) {
   res.status(404);

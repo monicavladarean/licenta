@@ -24,6 +24,7 @@ StaffRepository.prototype.getStaff = async function () {
         return staff;
     } catch (error) {
         console.error(error);
+        throw error;
     }
     finally{
         if(dbConnection!=null)
@@ -38,6 +39,33 @@ async function getStaffSQL(database) {
         const result = await database.all(query);
         console.log(result);
         return result;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+StaffRepository.prototype.deleteStaffById = async function (id) {
+    var dbConnection = null;
+    try {
+        sqlite3.verbose();
+        dbConnection = await createDbConnection('campsDB.sqlite');
+        const result = await deleteStaffByIdSQL(dbConnection, id);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+    finally{
+        if(dbConnection!=null)
+        dbConnection.close();
+    }
+}
+
+
+async function deleteStaffByIdSQL(dbConnection, id) {
+    try {
+        const query = 'DELETE FROM Staff WHERE id = ' + id;
+        const result = await dbConnection.run(query);
     } catch (error) {
         console.error(error);
         throw error;
