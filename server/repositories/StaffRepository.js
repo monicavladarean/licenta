@@ -72,4 +72,30 @@ async function deleteStaffByIdSQL(dbConnection, id) {
     }
 }
 
+StaffRepository.prototype.insertStaff = async function (staff) {
+    var dbConnection = null;
+    try {
+        sqlite3.verbose();
+        dbConnection = await createDbConnection('campsDB.sqlite');
+        const result = await insertStaffSQL(dbConnection, staff);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+    finally{
+        if(dbConnection!=null)
+        dbConnection.close();
+    }
+}
+
+async function insertStaffSQL(dbConnection, staff) {
+    try {
+        var query = 'INSERT INTO Staff (isAdmin, username, password, firstName, lastName) VALUES (?,?,?,?,?)';
+        const result = await dbConnection.run(query, [staff.isAdmin,staff.username.toString(),staff.password.toString(),staff.firstName.toString(), staff.lastName.toString()]);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 module.exports = StaffRepository;
