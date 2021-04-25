@@ -112,4 +112,24 @@ module.exports = function (app) {
       }
     })();
   });
+
+  app.post("/authenticate", (req, res, next) => {
+    var staffRepository = new StaffRepository();
+
+    (async () => {
+      try {
+        await staffRepository.authenticate(
+          req.body.username,
+          req.body.password
+        );
+        res.status(200).send({
+          message: "Authenticated",
+        });
+      } catch (error) {
+        res.status(400).send({
+          message: "Username or password is incorrect",
+        });
+      }
+    })();
+  });
 };

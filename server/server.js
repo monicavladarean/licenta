@@ -2,6 +2,7 @@ var express = require("express");
 bodyParser = require("body-parser");
 //const cors = require("cors");
 var db = require("./databaseInitialisation.js");
+const basicAuthentication = require("./helpers/basicAuthentication");
 
 var app = express();
 
@@ -13,6 +14,8 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(basicAuthentication);
 
 var HTTP_PORT = 8080;
 app.listen(HTTP_PORT, () => {

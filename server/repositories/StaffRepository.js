@@ -125,4 +125,40 @@ async function updateStaffSQL(dbConnection, staff) {
   }
 }
 
+StaffRepository.prototype.authenticate = async function ( username, password ) {
+    var dbConnection = null;
+    try {
+      sqlite3.verbose();
+  
+      dbConnection = await createDbConnection("campsDB.sqlite");
+      
+    const user =await getStaffByUsernamePasswordSQL(dbConnection,username,password);
+    console.log(user);
+    if (user.length!=0) {
+        return user;
+    }
+
+    } catch (error) {
+      throw error;
+    } finally {
+      if (dbConnection != null) dbConnection.close();
+    }
+
+}
+
+async function getStaffByUsernamePasswordSQL(dbConnection,username,password) {
+    try {
+      const query =
+        "SELECT id, isAdmin, username, firstName, lastName FROM Staff WHERE username=? AND password=?";
+      const result = await dbConnection.all(query, [
+        username,
+        password,
+      ]);
+
+      return result;
+    } catch (error) {
+      throw new EvalError("Error in retrieving user");
+    }
+  }
+
 module.exports = StaffRepository;
