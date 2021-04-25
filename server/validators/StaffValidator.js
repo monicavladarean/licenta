@@ -3,7 +3,7 @@ var Staff = require("../models/Staff.js");
 function StaffValidator() {}
 
 StaffValidator.prototype.validateStaff = function (staff) {
-  if (staff.id != null && typeof staff.id != "number") {
+  if (staff.id != null && !Number.isInteger(staff.id)) {
     throw new TypeError("Id has to be an integer");
   }
   if (staff.isAdmin != "true" && staff.isAdmin != "false") {

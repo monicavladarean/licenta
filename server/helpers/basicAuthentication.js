@@ -6,6 +6,10 @@ async function basicAuthentication(req, res, next) {
         return next();
     }
 
+    if (req.method == 'GET' && req.path.startsWith('/camps')) {
+        return next();
+    }
+
     if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
         return res.status(401).json({ message: 'Missing authorization header' });
     }
