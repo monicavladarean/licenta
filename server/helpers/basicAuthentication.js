@@ -1,4 +1,4 @@
-const StaffRepository = require('../repositories/StaffRepository.js');
+const StaffService = require('../services/StaffService.js');
 
 async function basicAuthentication(req, res, next) {
 
@@ -13,8 +13,8 @@ async function basicAuthentication(req, res, next) {
     const base64Credentials =  req.headers.authorization.split(' ')[1];
     const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
     const [username, password] = credentials.split(':');
-    var staffRepository = new StaffRepository();
-    const user = await staffRepository.authenticate(username, password);
+    var staffService = new StaffService();
+    const user = await staffService.authenticate(username, password);
     if (!user) {
         return res.status(401).json({ message: 'Invalid authentication credentials' });
     }

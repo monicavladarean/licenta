@@ -1,7 +1,6 @@
 var sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
 var Staff = require("../models/Staff.js");
-var StaffValidator = require("../validators/StaffValidator.js");
 
 function StaffRepository() {}
 
@@ -62,10 +61,8 @@ async function deleteStaffByIdSQL(dbConnection, id) {
 
 StaffRepository.prototype.insertStaff = async function (staff) {
   var dbConnection = null;
-  try {
+  try {      
     sqlite3.verbose();
-    var staffValidator = new StaffValidator();
-    staffValidator.validateStaff(staff);
 
     dbConnection = await createDbConnection("campsDB.sqlite");
     const result = await insertStaffSQL(dbConnection, staff);
@@ -96,8 +93,6 @@ StaffRepository.prototype.updateStaffById = async function (staff) {
   var dbConnection = null;
   try {
     sqlite3.verbose();
-    var staffValidator = new StaffValidator();
-    staffValidator.validateStaff(staff);
 
     dbConnection = await createDbConnection("campsDB.sqlite");
     const result = await updateStaffSQL(dbConnection, staff);

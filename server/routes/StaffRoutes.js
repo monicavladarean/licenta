@@ -1,13 +1,13 @@
 const Staff = require("../models/Staff.js");
-var StaffRepository = require("../repositories/StaffRepository.js");
+const StaffService = require("../services/StaffService.js");
 
 module.exports = function (app) {
   app.get("/staff", (req, res, next) => {
-    var staffRepository = new StaffRepository();
+    var staffService = new StaffService();
 
     (async () => {
       try {
-        res.json(JSON.stringify(await staffRepository.getStaff()));
+        res.json(JSON.stringify(await staffService.getStaff()));
       } catch (error) {
         if (error instanceof EvalError || error instanceof TypeError) {
           res.status(400).send({
@@ -23,11 +23,11 @@ module.exports = function (app) {
   });
 
   app.delete("/staff/:id", (req, res, next) => {
-    var staffRepository = new StaffRepository();
+    var staffService = new StaffService();
 
     (async () => {
       try {
-        await staffRepository.deleteStaffById(req.params.id);
+        await staffService.deleteStaffById(req.params.id);
         res.status(200).send({
           message: "Deleted",
         });
@@ -46,11 +46,11 @@ module.exports = function (app) {
   });
 
   app.post("/staff", (req, res, next) => {
-    var staffRepository = new StaffRepository();
+    var staffService = new StaffService();
 
     (async () => {
       try {
-        await staffRepository.insertStaff(
+        await staffService.insertStaff(
           new Staff(
             null,
             req.body.isAdmin,
@@ -82,11 +82,11 @@ module.exports = function (app) {
   });
 
   app.put("/staff/:id", (req, res, next) => {
-    var staffRepository = new StaffRepository();
+    var staffService = new StaffService();
 
     (async () => {
       try {
-        await staffRepository.updateStaffById(
+        await staffService.updateStaffById(
           new Staff(
             parseInt(req.params.id),
             req.body.isAdmin,
@@ -113,12 +113,12 @@ module.exports = function (app) {
     })();
   });
 
-  app.post("/authenticate", (req, res, next) => {
-    var staffRepository = new StaffRepository();
+  app.post("/staff/authenticate", (req, res, next) => {
+    var staffService = new StaffService();
 
     (async () => {
       try {
-        await staffRepository.authenticate(
+        await staffService.authenticate(
           req.body.username,
           req.body.password
         );
