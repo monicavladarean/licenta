@@ -9,10 +9,15 @@ module.exports = function (app) {
       try {
         res.json(JSON.stringify(await staffRepository.getStaff()));
       } catch (error) {
-        console.error(error);
-        res.status(400).send({
-          message: error.message,
-        });
+        if (error instanceof EvalError || error instanceof TypeError) {
+          res.status(400).send({
+            message: error.message,
+          });
+        } else {
+          res.status(500).send({
+            message: "Internal server error",
+          });
+        }
       }
     })();
   });
@@ -27,10 +32,15 @@ module.exports = function (app) {
           message: "Deleted",
         });
       } catch (error) {
-        console.error(error);
-        res.status(400).send({
-          message: error.message,
-        });
+        if (error instanceof EvalError || error instanceof TypeError) {
+          res.status(400).send({
+            message: error.message,
+          });
+        } else {
+          res.status(500).send({
+            message: "Internal server error",
+          });
+        }
       }
     })();
   });
@@ -54,10 +64,19 @@ module.exports = function (app) {
           message: "Created",
         });
       } catch (error) {
-        console.error(error);
-        res.status(400).send({
-          message: error.message,
-        });
+        if (error instanceof TypeError) {
+          res.status(400).send({
+            message: error.message,
+          });
+        } else if (error instanceof EvalError) {
+          res.status(403).send({
+            message: "This staff username already exists",
+          });
+        } else {
+          res.status(500).send({
+            message: "Internal server error",
+          });
+        }
       }
     })();
   });
@@ -69,7 +88,7 @@ module.exports = function (app) {
       try {
         await staffRepository.updateStaffById(
           new Staff(
-            req.params.id,
+            parseInt(req.params.id),
             req.body.isAdmin,
             req.body.username,
             req.body.password,
@@ -81,10 +100,15 @@ module.exports = function (app) {
           message: "Updated",
         });
       } catch (error) {
-        console.error(error);
-        res.status(400).send({
-          message: error.message,
-        });
+        if (error instanceof EvalError || error instanceof TypeError) {
+          res.status(400).send({
+            message: error.message,
+          });
+        } else {
+          res.status(500).send({
+            message: "Internal server error",
+          });
+        }
       }
     })();
   });
