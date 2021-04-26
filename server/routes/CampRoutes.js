@@ -1,14 +1,19 @@
+const url = require('url');
 const Camp = require("../models/Camp.js");
 const CampService = require("../services/CampService.js");
 
 module.exports = function (app) {
+//    /camps?category=some&status=other
+//    /camps?category=bike
+//    /camps?category=some&status=other
 
-    app.get("/camps", (req, res, next) => {
+app.get("/camps", (req, res, next) => {
         var campService = new CampService();
-    
+        const queryObject = url.parse(req.url,true).query;
+
         (async () => {
           try {
-            res.json(JSON.stringify(await campService.getCamps()));
+            res.json(JSON.stringify(await campService.getCamps(queryObject.category,queryObject.status)));
           } catch (error) {
             if (error instanceof EvalError || error instanceof TypeError) {
               res.status(400).send({

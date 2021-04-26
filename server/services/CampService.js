@@ -3,10 +3,10 @@ var CampRepository = require("../repositories/CampRepository.js");
 
 function CampService() {}
 
-CampService.prototype.getCamps = async function () {
+CampService.prototype.getCamps = async function (category, status) {
     try {
       var campRepository = new CampRepository();
-      const camps = await campRepository.getCamps();
+      const camps = await campRepository.getCamps(category, status);
       return camps;
     } catch (error) {
       throw error;

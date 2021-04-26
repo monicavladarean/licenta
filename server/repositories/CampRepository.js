@@ -11,12 +11,12 @@ async function createDbConnection(filename) {
   });
 }
 
-CampRepository.prototype.getCamps = async function () {
+CampRepository.prototype.getCamps = async function (category,status) {
   var dbConnection = null;
   try {
     sqlite3.verbose();
     dbConnection = await createDbConnection("campsDB.sqlite");
-    const result = await getCampsSQL(dbConnection);
+    const result = await getCampsSQL(dbConnection,category,status);
     var camps = new Array(result);
     return camps;
   } catch (error) {
@@ -26,12 +26,64 @@ CampRepository.prototype.getCamps = async function () {
   }
 };
 
-async function getCampsSQL(database) {
+async function getCampsSQL(database, category, status) {
   try {
-    const query =
-      "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp";
-    const result = await database.all(query);
-    return result;
+    const query = "";
+    if (category === undefined && status === undefined) {
+      const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp";
+      const result = await database.all(query);
+      return result;
+    } else if (status === undefined) {
+      const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp WHERE category='" +category+"'";
+      const result = await database.all(query);
+      return result;
+    } else if (category === undefined) {
+      if(status==="future")
+      {
+        const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp WHERE startDate> date('now') ";
+      const result = await database.all(query);
+      return result;
+      }
+      if(status==="ended")
+      {
+        const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp WHERE endDate < date('now') ";
+      const result = await database.all(query);
+      return result;
+      }
+      if(status==="ongoing")
+      {
+        const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp WHERE startDate< date('now') AND endDate > date('now') ";
+      const result = await database.all(query);
+      return result;
+      }
+    } else {
+      if(status==="future")
+      {
+        const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp WHERE category='" +category+"' AND startDate> date('now') ";
+      const result = await database.all(query);
+      return result;
+      }
+      if(status==="ended")
+      {
+        const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp WHERE category='" +category+"' AND endDate < date('now') ";
+      const result = await database.all(query);
+      return result;
+      }
+      if(status==="ongoing")
+      {
+        const query =
+        "SELECT id, category, name, location, startDate, duration, minAge, maxAge FROM Camp WHERE category='" +category+"' AND startDate< date('now') AND endDate > date('now') ";
+      const result = await database.all(query);
+      return result;
+      }
+    }
   } catch (error) {
     throw new EvalError("Error in retrieving the data");
   }
