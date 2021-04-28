@@ -1,8 +1,8 @@
 const date = require('date-and-time')
 
-function Registration(id, camp, adult, kid) {
+function Registration(id, campId, adult, kid) {
   this.id = id;
-  this.camp = camp;
+  this.campId = campId;
   this.adult = adult;
   this.kid = kid;
   this.registrationDate = new Date().toISOString().split("T")[0];

@@ -3,10 +3,7 @@ const Camp = require("../models/Camp.js");
 const CampService = require("../services/CampService.js");
 
 module.exports = function (app) {
-//    /camps?category=some&status=other
-//    /camps?category=bike
-//    /camps?category=some&status=other
-
+    
 app.get("/camps", (req, res, next) => {
         var campService = new CampService();
         const queryObject = url.parse(req.url,true).query;

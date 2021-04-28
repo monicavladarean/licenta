@@ -27,7 +27,8 @@ app.get("/", (req, res, next) => {
 });
 
 var staffRoutes = require("./routes/StaffRoutes")(app);
-var staffRoutes = require("./routes/CampRoutes")(app);
+var campRoutes = require("./routes/CampRoutes")(app);
+var registrationRoutes = require("./routes/RegistrationRoutes")(app);
 
 app.use(function (req, res) {
   res.status(404);
