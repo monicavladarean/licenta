@@ -118,10 +118,7 @@ module.exports = function (app) {
 
     (async () => {
       try {
-        await staffService.authenticate(
-          req.body.username,
-          req.body.password
-        );
+        await staffService.authenticate(req.body.username, req.body.password);
         res.status(200).send({
           message: "Authenticated",
         });
