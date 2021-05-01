@@ -43,6 +43,7 @@ module.exports = function (app) {
             message: error.message,
           });
         } else {
+            console.log(error);
           res.status(500).send({
             message: "Internal server error",
           });

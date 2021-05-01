@@ -145,7 +145,7 @@ async function getStaffByUsernamePasswordSQL(dbConnection,username,password) {
     try {
       const query =
         "SELECT id, isAdmin, username, firstName, lastName FROM Staff WHERE username=? AND password=?";
-      const result = await dbConnection.all(query, [
+      const result = await dbConnection.get(query, [
         username,
         password,
       ]);

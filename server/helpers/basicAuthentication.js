@@ -13,6 +13,7 @@ async function basicAuthentication(req, res, next) {
     if (req.method == 'POST' && req.path.startsWith('/registrations')) {
         return next();
     }
+    
 
     if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
         return res.status(401).json({ message: 'Missing authorization header' });
@@ -28,6 +29,21 @@ async function basicAuthentication(req, res, next) {
     }
 
     req.user = user
+
+    if(req.method != 'GET' && req.path.startsWith('/camps') && req.user.isAdmin!="true")
+    {
+        return res.status(401).json({ message: 'Only an admin can perform this operation' });
+    }
+
+    if(req.method != 'GET' && req.method != 'POST' && req.path.startsWith('/registrations') && req.user.isAdmin!="true")
+    {
+        return res.status(401).json({ message: 'Only an admin can perform this operation' });
+    }
+
+    if(req.path.startsWith('/staff') && req.user.isAdmin!="true")
+    {
+        return res.status(401).json({ message: 'Only an admin can perform this operation' });
+    }
 
     next();
 }
