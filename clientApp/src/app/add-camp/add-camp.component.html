@@ -1,1 +1,110 @@
-<p>add-camp works!</p>
+<app-navigation-menu></app-navigation-menu>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                   <div align="center"><h2>Add New Camp</h2></div> 
+
+                    <form>
+
+                        <div class="form-group">
+                            <label for="name">
+                                Camp name: 
+                            </label>
+                            <input id="name" type="text" class="form-control" formControlName="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">
+                                Description: 
+                            </label>
+                            <input id="description" type="text" class="form-control" formControlName="description">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">
+                                Location: 
+                            </label>
+                            <input id="location" type="text" class="form-control" formControlName="location">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="schedule">
+                                Schedule: 
+                            </label>
+                            <input id="schedule" type="text" class="form-control" formControlName="schedule">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startDate">
+                                Start date: 
+                            </label>
+                            <input id="startDate" type="text" class="form-control" formControlName="startDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duration">
+                                Duration: 
+                            </label>
+                            <input id="duration" type="text" class="form-control" formControlName="duration">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">
+                                Category: 
+                            </label>
+                            <input id="category" type="text" class="form-control" formControlName="category">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="capacity">
+                                Capacity: 
+                            </label>
+                            <input id="capacity" type="text" class="form-control" formControlName="capacity">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">
+                                Price: 
+                            </label>
+                            <input id="price" type="text" class="form-control" formControlName="price">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="minAge">
+                                Minimum age: 
+                            </label>
+                            <input id="minAge" type="text" class="form-control" formControlName="minAge">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="maxAge">
+                                Maximum age: 
+                            </label>
+                            <input id="maxAge" type="text" class="form-control" formControlName="maxAge">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="requiredEquipment">
+                                Required equipment: 
+                            </label>
+                            <input id="requiredEquipment" type="text" class="form-control" formControlName="requiredEquipment">
+                        </div>                        
+
+                        <div align="center">
+                            <button class="button" type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                        
+                        <div align="center">
+                            <a href="#" class="nav-item nav-link" routerLink="homePage" routerLinkActive="active">Cancel and go back.</a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
