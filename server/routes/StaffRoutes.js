@@ -118,10 +118,13 @@ module.exports = function (app) {
 
     (async () => {
       try {
-        await staffService.authenticate(req.body.username, req.body.password);
-        res.status(200).send({
-          message: "Authenticated",
-        });
+
+        res.json(JSON.stringify(await staffService.authenticate(req.body.username, req.body.password)));
+        
+        //await staffService.authenticate(req.body.username, req.body.password);
+       // res.status(200).send({
+         // message: "Authenticated",
+       // });
       } catch (error) {
         res.status(400).send({
           message: "Username or password is incorrect",

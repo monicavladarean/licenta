@@ -6,13 +6,13 @@
     <a class="nav-item nav-link" routerLink="/companyDetails" routerLinkActive="active">About us</a>
     <a class="nav-item nav-link" routerLink="/campsList" routerLinkActive="active">Our camps</a>
 
-    <a class="nav-item nav-link" routerLink="/staffList" routerLinkActive="active">Staff list</a>
+    <a class="nav-item nav-link" routerLink="/staffList" routerLinkActive="active" *ngIf="user">Staff list</a>
 
-    <a class="nav-item nav-link" routerLink="addStaff" routerLinkActive="active">Add new employee</a>
-    <a class="nav-item nav-link" routerLink="/addCamp" routerLinkActive="active">Add new camp</a>
+    <a class="nav-item nav-link" routerLink="addStaff" routerLinkActive="active" *ngIf="user">Add new employee</a>
+    <a class="nav-item nav-link" routerLink="/addCamp" routerLinkActive="active" *ngIf="user">Add new camp</a>
 
-    <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Staff log in</a>
-    <a class="nav-item nav-link" routerLink="" routerLinkActive="active">Log out</a>
+    <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!user" >Staff log in</a>
+    <a class="nav-item nav-link" routerLink="" routerLinkActive="active" (click)="logout()" *ngIf="user" >Log out</a>
 
     </nav>
 </div>

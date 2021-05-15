@@ -129,7 +129,7 @@ StaffRepository.prototype.authenticate = async function ( username, password ) {
       
     const user =await getStaffByUsernamePasswordSQL(dbConnection,username,password);
     console.log(user);
-    if (user.length!=0) {
+    if (user!= undefined && user.length!=0) {
         return user;
     }
 

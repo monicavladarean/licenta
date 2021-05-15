@@ -16,21 +16,23 @@ import { AddRegistrationComponent } from './add-registration/add-registration.co
 import { EditRegistrationComponent } from './edit-registration/edit-registration.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 
+import { AuthenticationGuard } from './helpers/authenticationGuard';
+
 const routes: Routes = [
   {path: '', component: UserTypeChoiceComponent},
   {path: 'homePage', component: HomePageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'companyDetails', component: CompanyDetailsComponent},
   {path: 'addRegistration', component: AddRegistrationComponent},
-  {path: 'addStaff', component: AddStaffComponent},
-  {path: 'staffList', component: StaffListComponent},
+  {path: 'addStaff', component: AddStaffComponent, canActivate: [AuthenticationGuard]},
+  {path: 'staffList', component: StaffListComponent, canActivate: [AuthenticationGuard]},
   {path: 'campsList', component: CampsListComponent},
-  {path: 'addCamp', component: AddCampComponent},
-  {path: 'editStaff/:id', component: EditStaffComponent},
-  {path: 'editCamp/:id', component: EditCampComponent},
-  {path: 'editRegistration/:id', component: EditRegistrationComponent},
+  {path: 'addCamp', component: AddCampComponent, canActivate: [AuthenticationGuard]},
+  {path: 'editStaff/:id', component: EditStaffComponent, canActivate: [AuthenticationGuard]},
+  {path: 'editCamp/:id', component: EditCampComponent, canActivate: [AuthenticationGuard]},
+  {path: 'editRegistration/:id', component: EditRegistrationComponent, canActivate: [AuthenticationGuard]},
   {path: 'campDetails/:id', component: CampDetailsComponent},
-  {path: 'registrationsForCamp/:id', component: RegistrationsForCampComponent},
+  {path: 'registrationsForCamp/:id', component: RegistrationsForCampComponent, canActivate: [AuthenticationGuard]},
 
   { path: '**', redirectTo: '' }
 ];
