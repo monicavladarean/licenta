@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
@@ -19,7 +19,9 @@ export class NavigationMenuComponent implements OnInit {
     this.authenticationService.user.subscribe((x) => (this.user = x));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   logout() {
     this.authenticationService.logout();

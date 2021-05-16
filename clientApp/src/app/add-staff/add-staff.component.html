@@ -7,45 +7,64 @@
                 <div class="card-body">
                    <div align="center"><h2>Add New Employee</h2></div> 
 
-                    <form>
+                    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label for="firstName">
                                 First name: 
                             </label>
-                            <input id="firstName" type="text" class="form-control" formControlName="firstName">
+                            <input id="firstName" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First name is required</div>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="lastName">
                                 Last name: 
                             </label>
-                            <input id="lastName" type="text" class="form-control" formControlName="lastName">
+                            <input id="lastName" type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last name is required</div>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="username">
                                 Username: 
                             </label>
-                            <input id="username" type="text" class="form-control" formControlName="username">
+                            <input id="username" type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Username is required</div>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="password">
                                 Password: 
                             </label>
-                            <input id="password" type="password" class="form-control" formControlName="password">
+                            <input id="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="isAdmin">
-                                Is admin: 
+                                Is admin (true/false): 
                             </label>
-                            <input id="isAdmin" type="text" class="form-control" formControlName="isAdmin">
+                            <input id="isAdmin" type="text" formControlName="isAdmin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.isAdmin.errors }" />
+                            <div *ngIf="submitted && f.isAdmin.errors" class="invalid-feedback">
+                                <div *ngIf="f.isAdmin.errors.required">Is admin (true/false) is required</div>
+                            </div>
                         </div>
 
                         <div align="center">
-                            <button class="button" type="submit" class="btn btn-primary">Add</button>
+                            <button [disabled]="loading" class="btn btn-primary">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Add
+                            </button>
+                            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                         </div>
                         
                         <div align="center">

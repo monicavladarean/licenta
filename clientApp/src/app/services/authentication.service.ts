@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Staff } from '../models/staff';
-import { UserTypeChoiceComponent } from '../user-type-choice/user-type-choice.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
