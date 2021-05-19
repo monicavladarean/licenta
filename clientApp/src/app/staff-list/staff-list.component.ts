@@ -38,12 +38,29 @@ export class StaffListComponent implements OnInit {
     this.staffService
       .getAllStaff()
       .subscribe(
-        (data) => { 
-          this.staffItems = JSON.parse(""+data);
-        },
-        (error) => {
-          console.log('Table could not be filled with data', error);
-        }
+        ()=>this.fetchData()
       );
+  }
+
+  deleteStaff(id:number, username:string)
+  {
+    if(username!="admin")
+      if(confirm("Are you sure to delete " + username + " ?")) 
+      {
+        this.staffService.deleteStaff(id).subscribe(()=>this.fetchData());
+      }
+  }
+
+  fetchData() {
+    this.staffService
+    .getAllStaff()
+    .subscribe(
+      (data) => { 
+        this.staffItems = JSON.parse(""+data);
+      },
+      (error) => {
+        console.log('Table could not be filled with data', error);
+      }
+    );
   }
 }

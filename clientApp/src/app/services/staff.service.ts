@@ -25,4 +25,9 @@ export class StaffService {
     getAllStaff() {
         return this.httpClient.get<Staff[]>(`${environment.apiUrl}/staff`);
     }
+
+    deleteStaff(id:number) : Observable<unknown>
+    {
+      return this.httpClient.delete(`${environment.apiUrl}/staff/`+id);
+    }
 }
