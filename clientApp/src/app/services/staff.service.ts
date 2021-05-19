@@ -22,7 +22,7 @@ export class StaffService {
     });
     }
 
-    getAll() {
+    getAllStaff() {
         return this.httpClient.get<Staff[]>(`${environment.apiUrl}/staff`);
     }
 }

@@ -18,7 +18,7 @@ StaffRepository.prototype.getStaff = async function () {
     dbConnection = await createDbConnection("campsDB.sqlite");
     const result = await getStaffSQL(dbConnection);
     var staff = new Array(result);
-    return staff;
+    return staff[0];
   } catch (error) {
     throw error;
   } finally {

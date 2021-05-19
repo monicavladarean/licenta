@@ -23,6 +23,20 @@ import { AddRegistrationComponent } from './add-registration/add-registration.co
 import { EditRegistrationComponent } from './edit-registration/edit-registration.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -42,13 +56,31 @@ import { NavigationMenuComponent } from './navigation-menu/navigation-menu.compo
     EditRegistrationComponent,
     CompanyDetailsComponent,
     NavigationMenuComponent,  
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    CommonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
