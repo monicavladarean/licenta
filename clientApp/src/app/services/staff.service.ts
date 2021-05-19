@@ -22,6 +22,21 @@ export class StaffService {
     });
     }
 
+    editStaff(id:number, isAdmin: boolean, username:string , password:string, firstName:string, lastName:string): Observable<any> {
+      return this.httpClient.put<Staff>(`${environment.apiUrl}/staff/`+id , {
+        id: id,
+        isAdmin: isAdmin,
+        username: username,
+        password: password,
+        firstName: firstName,
+        lastName: lastName
+    });
+    }
+
+    getStaffById(id:number){
+      return this.httpClient.get<Staff>(`${environment.apiUrl}/staff/`+id);
+    }
+
     getAllStaff() {
         return this.httpClient.get<Staff[]>(`${environment.apiUrl}/staff`);
     }

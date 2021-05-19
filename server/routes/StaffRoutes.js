@@ -132,4 +132,26 @@ module.exports = function (app) {
       }
     })();
   });
+
+  app.get("/staff/:id", (req, res, next) => {
+    var staffService = new StaffService();
+
+    (async () => {
+      try {
+        res.json(
+          JSON.stringify(await staffService.getStaffById(parseInt(req.params.id)))
+        );
+      } catch (error) {
+        if (error instanceof EvalError || error instanceof TypeError) {
+          res.status(400).send({
+            message: error.message,
+          });
+        } else {
+          res.status(500).send({
+            message: "Internal server error",
+          });
+        }
+      }
+    })();
+  });
 };

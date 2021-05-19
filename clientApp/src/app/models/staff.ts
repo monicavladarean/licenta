@@ -7,13 +7,13 @@ export class Staff {
     lastName: string;
     authdata?: string ;
 
-    constructor(id:number,isAdmin:boolean, username:string, firstName:string, lastName:string)
+    constructor(id:number,isAdmin:boolean, username:string, firstName:string, lastName:string,password?:string)
     {
         this.id = id;
         this.isAdmin = isAdmin;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-
+        this.password = password;
     }
 }

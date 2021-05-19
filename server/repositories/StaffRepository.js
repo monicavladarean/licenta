@@ -156,4 +156,28 @@ async function getStaffByUsernamePasswordSQL(dbConnection,username,password) {
     }
   }
 
+  StaffRepository.prototype.getStaffById = async function (id) {
+    var dbConnection = null;
+    try {
+      sqlite3.verbose();
+      dbConnection = await createDbConnection("campsDB.sqlite");
+      const result = await getStaffByIdSQL(dbConnection, id);
+      return result;
+    } catch (error) {
+      throw error;
+    } finally {
+      if (dbConnection != null) dbConnection.close();
+    }
+  };
+  
+  async function getStaffByIdSQL(dbConnection, id) {
+    try {
+      const query = "SELECT id, isAdmin, username, password, firstName, lastName FROM Staff WHERE id = " + id;
+      const result = await dbConnection.get(query);
+      return result;
+    } catch (error) {
+      throw new EvalError("Error processing delete");
+    }
+  }
+
 module.exports = StaffRepository;

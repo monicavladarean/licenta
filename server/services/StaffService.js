@@ -56,4 +56,14 @@ StaffService.prototype.authenticate = async function ( username, password ) {
 
 }
 
+StaffService.prototype.getStaffById = async function (id) {
+  try {
+    var staffRepository = new StaffRepository();
+    const result = await staffRepository.getStaffById(id);
+    return result;
+  } catch (error) {
+    throw error;
+  } 
+};
+
 module.exports = StaffService;
