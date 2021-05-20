@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { Camp } from '../models/camp';
 import { CampsService } from '../services/camps.service';
@@ -37,7 +38,7 @@ export class CampsListComponent implements OnInit {
   //activeOnly$=new BehaviorSubject(false);
   //itemsCount = 0;
 
-  constructor(private campsService: CampsService) { }
+  constructor(private campsService: CampsService, private router: Router) { }
 
   ngOnInit(): void {
     this.campsService
@@ -53,7 +54,6 @@ export class CampsListComponent implements OnInit {
     .getAllCamps()
     .subscribe(
       (data) => { 
-        console.log(data);
         this.campItems = JSON.parse(""+data);
         this.isLoading = false;
       },
@@ -70,6 +70,11 @@ export class CampsListComponent implements OnInit {
       {
         this.campsService.deleteCamp(id).subscribe(()=>this.fetchData());
       }
+  }
+
+  showCampDetails(id:number)
+  {
+    this.router.navigate(['/campDetails/'+id]);
   }
 
 }

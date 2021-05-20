@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
+import { MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,7 @@ import { CommonModule } from '@angular/common';
     AddRegistrationComponent,
     EditRegistrationComponent,
     CompanyDetailsComponent,
-    NavigationMenuComponent,  
-
+    NavigationMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +65,7 @@ import { CommonModule } from '@angular/common';
     FormsModule, 
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatListModule,
 
     MatTableModule,
     MatPaginatorModule,
