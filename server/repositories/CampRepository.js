@@ -18,7 +18,7 @@ CampRepository.prototype.getCamps = async function (category,status) {
     dbConnection = await createDbConnection("campsDB.sqlite");
     const result = await getCampsSQL(dbConnection,category,status);
     var camps = new Array(result);
-    return camps;
+    return camps[0];
   } catch (error) {
     throw error;
   } finally {
@@ -127,7 +127,7 @@ CampRepository.prototype.getCampById = async function (id) {
 
 async function getCampByIdSQL(dbConnection, id) {
   try {
-    const query = "SELECT id, name, description, location, schedule, startDate, category, capacity, price, minAge, maxAge, requiredEquipment, duration FROM Camp WHERE id = " + id;
+    const query = "SELECT id, name, description, location, schedule, startDate, endDate, category, capacity, price, minAge, maxAge, requiredEquipment, duration FROM Camp WHERE id = " + id;
     const result = await dbConnection.get(query);
     return result;
   } catch (error) {

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'homePage', component: HomePageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'companyDetails', component: CompanyDetailsComponent},
-  {path: 'addRegistration', component: AddRegistrationComponent},
+  {path: 'addRegistration/:id', component: AddRegistrationComponent},
   {path: 'addStaff', component: AddStaffComponent, canActivate: [AuthenticationGuard]},
   {path: 'staffList', component: StaffListComponent, canActivate: [AuthenticationGuard]},
   {path: 'campsList', component: CampsListComponent},

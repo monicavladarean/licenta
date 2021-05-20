@@ -22,14 +22,7 @@ export class StaffListComponent implements OnInit {
     'remove'
   ];
   staffItems: Staff[];
-
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
-  //@ViewChild(MatSort) sort: MatSort;
-
-  //selection = new SelectionModel<InventoryItem>(true, []);
   isLoading: boolean;
-  //activeOnly$=new BehaviorSubject(false);
-  //itemsCount = 0;
 
   constructor(private staffService: StaffService) {}
 
@@ -45,21 +38,29 @@ export class StaffListComponent implements OnInit {
   deleteStaff(id:number, username:string)
   {
     if(username!="admin")
-      if(confirm("Are you sure to delete " + username + " ?")) 
+      {if(confirm("Are you sure you want to delete " + username + " ?")) 
       {
         this.staffService.deleteStaff(id).subscribe(()=>this.fetchData());
+      }
+    }
+    else
+      {
+        alert("Admin can't be deleted!");
       }
   }
 
   fetchData() {
+    this.isLoading = true;
     this.staffService
     .getAllStaff()
     .subscribe(
       (data) => { 
         this.staffItems = JSON.parse(""+data);
+        this.isLoading = false;
       },
       (error) => {
         console.log('Table could not be filled with data', error);
+        this.isLoading = false;
       }
     );
   }
