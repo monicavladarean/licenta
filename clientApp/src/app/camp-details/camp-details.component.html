@@ -1,6 +1,11 @@
 <app-navigation-menu></app-navigation-menu>
 
 <div align="center"> <h3>{{element.name}} </h3></div>
+<div align="center">
+    <button  class="btn btn-primary" (click)="register()">
+        Register to this camp
+    </button>
+</div>
 
 <mat-list role="list">
 	<mat-list-item role="listitem"><h5 class="mb-1">Category: </h5> <p class="mb-1">{{element.category}}</p> </mat-list-item>
@@ -13,4 +18,6 @@
     <mat-list-item role="listitem"><h5 class="mb-1">Price: </h5> <p class="mb-1">{{element.price}}</p> </mat-list-item>
     <mat-list-item role="listitem"><h5 class="mb-1">Maximum number of participants: </h5> <p class="mb-1">{{element.capacity}}</p> </mat-list-item>
 </mat-list>
+
+
 

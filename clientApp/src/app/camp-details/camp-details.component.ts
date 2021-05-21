@@ -17,6 +17,7 @@ export class CampDetailsComponent implements OnInit {
   element: Camp;
 
   constructor(
+    private router:Router,
     private route: ActivatedRoute,
     private campsService: CampsService
     ) { }
@@ -32,6 +33,11 @@ export class CampDetailsComponent implements OnInit {
       this.element = new Camp(this.id,data.name, data.description,data.location,data.schedule,data.startDate,data.endDate,data.category,data.capacity,data.price,data.minAge,data.maxAge,data.requiredEquipment, data.duration);
     }
   );
+}
+
+register()
+{
+  this.router.navigate(['/addRegistration/'+this.id]);
 }
 }
 
