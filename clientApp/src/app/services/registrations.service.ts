@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class RegistrationsService {
   constructor(private httpClient: HttpClient) {}
 
-  getRegistrationById(id: number) {
+  getRegistrationById(id: Number) {
     return this.httpClient.get<Registration>(
       `${environment.apiUrl}/registrations/` + id
     );
@@ -68,5 +68,32 @@ export class RegistrationsService {
 
       }
     );
+  }
+
+  editRegistration(
+    id:Number,
+    campId: Number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    dateOfBirth: Date,
+    information: string,
+    parentFirstName: string,
+    parentLastName: string,
+    parentEmail: string,
+    phone: string
+  ): Observable<any> {
+    return this.httpClient.put<Registration>(`${environment.apiUrl}/registrations/` + id, {
+        campId: campId,
+        adultFirstName: parentFirstName,
+        adultLastName: parentLastName,
+        adultEmail: parentEmail,
+        adultPhone: phone,
+        kidFirstName: firstName,
+        kidLastName: lastName,
+        kidEmail: email,
+        kidDateOfBirth: dateOfBirth,
+        kidInformation: information,
+    });
   }
 }

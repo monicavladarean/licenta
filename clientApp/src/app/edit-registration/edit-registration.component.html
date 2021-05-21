@@ -1,1 +1,145 @@
-<p>edit-registration works!</p>
+<app-navigation-menu></app-navigation-menu>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div align="center">
+                        <h2>Edit registration</h2>
+                    </div>
+
+                    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group row">
+
+                            <div class="col-sm-6">
+                                <label for="firstName">
+                                    Child's first name:
+                                </label>
+                                <input id="firstName" type="text" class="form-control" formControlName="firstName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.firstName.errors.required">Child's first name is required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="lastName">
+                                    Child's last name:
+                                </label>
+                                <input id="lastName" type="text" class="form-control" formControlName="lastName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.location.errors.required">Child's last name is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">
+                                Child's date of brith:
+                            </label>
+                            <input id="dateOfBirth" type="text" class="form-control" formControlName="dateOfBirth"
+                                [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" />
+                            <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
+                                <div *ngIf="f.description.errors.required">Child's date of brith is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="information">
+                                Information about the child:
+                            </label>
+                            <input id="information" type="text" class="form-control" formControlName="information"
+                                [ngClass]="{ 'is-invalid': submitted && f.information.errors }" />
+                        </div>
+
+
+
+                        <div class="form-group row">
+
+
+                            <div class="col-sm-6">
+                                <label for="parentFirstName">
+                                    Parent's first name:
+                                </label>
+                                <input id="parentFirstName" type="text" class="form-control"
+                                    formControlName="parentFirstName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.parentFirstName.errors }" />
+                                <div *ngIf="submitted && f.parentFirstName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.parentFirstName.errors.required">Parent's first name is
+                                        required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="parentLastName">
+                                    Parent's last name:
+                                </label>
+                                <input id="parentLastName" type="text" class="form-control" formControlName="parentLastName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.parentLastName.errors }" />
+                                <div *ngIf="submitted && f.parentLastName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.parentLastName.errors.required">Parent's last name is required
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-6">
+                                <label for="phone">
+                                    Parent's phone:
+                                </label>
+                                <input id="phone" type="text" class="form-control" formControlName="phone"
+                                    [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.phone.errors.required">Parent's phone is
+                                        required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="parentEmail">
+                                    Parent's email:
+                                </label>
+                                <input id="parentEmail" type="text" class="form-control" formControlName="parentEmail"
+                                    [ngClass]="{ 'is-invalid': submitted && f.parentEmail.errors }" />
+                                <div *ngIf="submitted && f.parentEmail.errors" class="invalid-feedback">
+                                    <div *ngIf="f.parentEmail.errors.required">Parent's email is required
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                        <div class="form-group">
+                            <label for="category">
+                                Child's email:
+                            </label>
+                            <input id="email" type="text" class="form-control" formControlName="email"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        </div>
+
+                        <div align="center">
+                            <button [disabled]="loading" class="btn btn-primary">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Update
+                            </button>
+                            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+                                {{error}}</div>
+                        </div>
+
+                        <div align="center">
+                            <a href="#" class="nav-item nav-link" routerLink="/campsList"
+                                routerLinkActive="active">Cancel and go to
+                                camps list</a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

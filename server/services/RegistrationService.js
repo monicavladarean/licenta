@@ -13,6 +13,17 @@ RegistrationService.prototype.getRegistrations = async function (campIdForFilter
   }
 };
 
+
+RegistrationService.prototype.getRegistrationById = async function (id) {
+    try {
+    var registrationRepository = new RegistrationRepository();
+      const result = await registrationRepository.getRegistrationById(id);
+      return result;
+    } catch (error) {
+      throw error;
+    } 
+  };
+
 RegistrationService.prototype.insertRegistration = async function (
   registration
 ) {

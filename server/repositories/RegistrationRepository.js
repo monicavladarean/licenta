@@ -47,6 +47,30 @@ async function getRegistrationsSQL(database, campIdForFilter) {
   }
 }
 
+RegistrationRepository.prototype.getRegistrationById = async function (id) {
+  var dbConnection = null;
+  try {
+    sqlite3.verbose();
+    dbConnection = await createDbConnection("campsDB.sqlite");
+    const result = await getRegistrationByIdSQL(dbConnection, id);
+    return result;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (dbConnection != null) dbConnection.close();
+  }
+};
+
+async function getRegistrationByIdSQL(dbConnection, id) {
+  try {
+    const query = "select Registration.id, Registration.campId, Registration.adultId, Registration.kidId, Registration.registrationDate, Kid.firstName, Kid.lastName, Kid.email, Kid.dateOfBirth, Kid.information, Adult.firstName as parentFirstName, Adult.lastName as parentLastName, Adult.email as parentEmail, Adult.phone from Registration join Kid on Registration.kidId=Kid.id join Adult on Adult.id=Registration.adultId WHERE Registration.id=" + id;
+    const result = await dbConnection.get(query);
+    return result;
+  } catch (error) {
+    throw new EvalError("Error processing get by id");
+  }
+}
+
 RegistrationRepository.prototype.insertRegistration = async function (
   registration
 ) {

@@ -32,6 +32,29 @@ module.exports = function (app) {
     })();
   });
 
+  
+  app.get("/registrations/:id", (req, res, next) => {
+    var registrationService = new RegistrationService();
+
+    (async () => {
+      try {
+        res.json(
+          JSON.stringify(await registrationService.getRegistrationById(parseInt(req.params.id)))
+        );
+      } catch (error) {
+        if (error instanceof EvalError || error instanceof TypeError) {
+          res.status(400).send({
+            message: error.message,
+          });
+        } else {
+          res.status(500).send({
+            message: "Internal server error",
+          });
+        }
+      }
+    })();
+  });
+
   app.post("/registrations", (req, res, next) => {
     var registrationService = new RegistrationService();
 
