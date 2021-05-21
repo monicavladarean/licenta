@@ -20,7 +20,7 @@ RegistrationRepository.prototype.getRegistrations = async function (
     dbConnection = await createDbConnection("campsDB.sqlite");
     const result = await getRegistrationsSQL(dbConnection, campIdForFilter);
     var registration = new Array(result);
-    return registration;
+    return registration[0];
   } catch (error) {
     throw error;
   } finally {
@@ -32,13 +32,13 @@ async function getRegistrationsSQL(database, campIdForFilter) {
   try {
     if (campIdForFilter == undefined) {
       const query =
-        "select Registration.id, Registration.campId, Registration.adultId, Registration.kidId, Registration.registrationDate, Kid.firstName, Kid.lastName, Kid.email, Kid.dateOfBirth, Kid.information, Adult.firstName, Adult.lastName, Adult.email, Adult.phone from Registration join Kid on Registration.kidId=Kid.id join Adult on Adult.id=Registration.adultId"
+        "select Registration.id, Registration.campId, Registration.adultId, Registration.kidId, Registration.registrationDate, Kid.firstName, Kid.lastName, Kid.email, Kid.dateOfBirth, Kid.information, Adult.firstName as parentFirstName, Adult.lastName as parentLastName, Adult.email as parentEmail, Adult.phone from Registration join Kid on Registration.kidId=Kid.id join Adult on Adult.id=Registration.adultId"
       const result = await database.all(query);
       return result;
     } else {
       const query =
-        "select Registration.id, Registration.campId, Registration.adultId, Registration.kidId, Registration.registrationDate, Kid.firstName, Kid.lastName, Kid.email, Kid.dateOfBirth, Kid.information, Adult.firstName, Adult.lastName, Adult.email, Adult.phone from Registration join Kid on Registration.kidId=Kid.id join Adult on Adult.id=Registration.adultId WHERE campId=" +
-        campIdForFilter;;
+        "select Registration.id, Registration.campId, Registration.adultId, Registration.kidId, Registration.registrationDate, Kid.firstName, Kid.lastName, Kid.email, Kid.dateOfBirth, Kid.information, Adult.firstName as parentFirstName, Adult.lastName as parentLastName, Adult.email as parentEmail, Adult.phone from Registration join Kid on Registration.kidId=Kid.id join Adult on Adult.id=Registration.adultId WHERE campId=" +
+        campIdForFilter;
       const result = await database.all(query);
       return result;
     }
