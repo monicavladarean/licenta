@@ -36,4 +36,9 @@ export class NavigationMenuComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
   }
+
+  deleteUser()
+{
+  sessionStorage.setItem('userType','null');
+}
 }

@@ -63,4 +63,9 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
+    deleteUser()
+    {
+      sessionStorage.setItem('userType','null');
+    }
 }

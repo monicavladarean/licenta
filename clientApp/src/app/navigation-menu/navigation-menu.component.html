@@ -1,7 +1,7 @@
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <a class="nav-item nav-link" routerLink="" routerLinkActive="active" *ngIf="!user && userType!='null'">ChangeUserType</a>
+    <a class="nav-item nav-link" routerLink="" routerLinkActive="active" *ngIf="!user && userType!='null'" (click)="deleteUser()">ChangeUserType</a>
 
     <a class="nav-item nav-link" routerLink="/homePage" routerLinkActive="active" *ngIf="userType!='null'">Home</a>
     <a class="nav-item nav-link" routerLink="/companyDetails" routerLinkActive="active" *ngIf="userType!='null'">About us</a>
