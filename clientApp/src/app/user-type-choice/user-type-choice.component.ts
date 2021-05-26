@@ -10,6 +10,16 @@ export class UserTypeChoiceComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    sessionStorage.setItem('userType', null)
   }
 
+  setAdult(){
+    sessionStorage.setItem('userType', 'adult');
+
+  }
+
+  setChild(){
+    sessionStorage.setItem('userType', 'child');
+
+  }
 }

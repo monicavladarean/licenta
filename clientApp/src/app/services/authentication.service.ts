@@ -25,6 +25,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
+        sessionStorage.setItem('userType', 'staff');
         return this.http.post<any>(`${environment.apiUrl}/staff/authenticate`, { username, password })
             .pipe(map(user => {
                 user = JSON.parse(user);

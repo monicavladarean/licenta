@@ -7,11 +7,6 @@
 
 <table mat-table [dataSource]="campItems" matSort class="mat-elevation-z8" >
 
-    <!-- ID Column  -->
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let element" (click)="showCampDetails(element.id)"> {{element.id}} </td>
-    </ng-container>
 
     <!-- Name Column  -->
     <ng-container matColumnDef="name">
@@ -56,24 +51,24 @@
     </ng-container>
 
     <!-- Register Column  -->
-    <ng-container matColumnDef="register">
+    <ng-container matColumnDef="register" *ngIf="userType=='adult'|| user">
         <th mat-header-cell *matHeaderCellDef> Register </th>
         <td mat-cell *matCellDef="let element"> <a class="register" routerLink="/addRegistration/{{element.id}}" routerLinkActive="active"><mat-icon>group_add</mat-icon></a> </td>
     </ng-container>
 
     <!-- Edit Column  -->
-    <ng-container matColumnDef="edit">
+    <ng-container matColumnDef="edit" *ngIf="user && isAdmin" >
         <th mat-header-cell *matHeaderCellDef> Edit </th>
         <td mat-cell *matCellDef="let element"> <a class="edit" routerLink="/editCamp/{{element.id}}" routerLinkActive="active"><mat-icon>edit</mat-icon></a> </td>
     </ng-container>
 
     <!-- View registrations Column  -->
-    <ng-container matColumnDef="registeredKids">
+    <ng-container matColumnDef="registeredKids" *ngIf="user">
         <th mat-header-cell *matHeaderCellDef> View registrations </th>
         <td mat-cell *matCellDef="let element"> <a class="edit" routerLink="/registrationsForCamp/{{element.id}}" routerLinkActive="active"><mat-icon>group</mat-icon></a> </td>
     </ng-container>
 
-    <ng-container matColumnDef="delete">
+    <ng-container matColumnDef="delete" *ngIf="user && isAdmin">
         <th mat-header-cell *matHeaderCellDef>
           Remove</th>
         <td mat-cell *matCellDef="let element;">

@@ -1,15 +1,16 @@
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <a class="nav-item nav-link" routerLink="" routerLinkActive="active">ChangeUserType</a>
-    <a class="nav-item nav-link" routerLink="/homePage" routerLinkActive="active">Home</a>
-    <a class="nav-item nav-link" routerLink="/companyDetails" routerLinkActive="active">About us</a>
-    <a class="nav-item nav-link" routerLink="/campsList" routerLinkActive="active">Our camps</a>
+    <a class="nav-item nav-link" routerLink="" routerLinkActive="active" *ngIf="!user && userType!='null'">ChangeUserType</a>
 
-    <a class="nav-item nav-link" routerLink="/staffList" routerLinkActive="active" *ngIf="user">Staff list</a>
+    <a class="nav-item nav-link" routerLink="/homePage" routerLinkActive="active" *ngIf="userType!='null'">Home</a>
+    <a class="nav-item nav-link" routerLink="/companyDetails" routerLinkActive="active" *ngIf="userType!='null'">About us</a>
+    <a class="nav-item nav-link" routerLink="/campsList" routerLinkActive="active" *ngIf="userType!='null'">Our camps</a>
 
-    <a class="nav-item nav-link" routerLink="/addStaff" routerLinkActive="active" *ngIf="user">Add new employee</a>
-    <a class="nav-item nav-link" routerLink="/addCamp" routerLinkActive="active" *ngIf="user">Add new camp</a>
+    <a class="nav-item nav-link" routerLink="/staffList" routerLinkActive="active" *ngIf="user && isAdmin">Staff list</a>
+
+    <a class="nav-item nav-link" routerLink="/addStaff" routerLinkActive="active" *ngIf="user && isAdmin">Add new employee</a>
+    <a class="nav-item nav-link" routerLink="/addCamp" routerLinkActive="active" *ngIf="user && isAdmin">Add new camp</a>
 
     <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!user" >Staff log in</a>
     <a class="nav-item nav-link" routerLink="" routerLinkActive="active" (click)="logout()" *ngIf="user" >Log out</a>

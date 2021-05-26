@@ -15,7 +15,6 @@ import { RegistrationsService} from '../services/registrations.service';
 export class RegistrationsForCampComponent implements OnInit {
 
   displayedColumns = [
-    'id',
     'name',
     'phone',
     'parentName',

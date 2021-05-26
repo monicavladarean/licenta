@@ -5,7 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { Camp } from '../models/camp';
+import { Staff } from '../models/staff';
 import { CampsService } from '../services/camps.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-camps-list',
@@ -14,8 +16,11 @@ import { CampsService } from '../services/camps.service';
 })
 export class CampsListComponent implements OnInit {
 
+  user: Staff;
+  isAdmin: boolean = false;
+  userType: string;
+
   displayedColumns = [
-    'id',
     'name',
     'category',
     'location',
@@ -23,10 +28,6 @@ export class CampsListComponent implements OnInit {
     'duration',
     'minAge',
     'maxAge',
-    'register',
-    'delete',
-    'edit',
-    'registeredKids'
   ];
   campItems: Camp[];
 
@@ -38,7 +39,29 @@ export class CampsListComponent implements OnInit {
   //activeOnly$=new BehaviorSubject(false);
   //itemsCount = 0;
 
-  constructor(private campsService: CampsService, private router: Router) { }
+  constructor(private campsService: CampsService, private router: Router,private authenticationService: AuthenticationService) { 
+    this.authenticationService.user.subscribe((x) => (this.user = x));
+    this.userType = sessionStorage.getItem('userType');
+
+    if(this.userType!='child')
+    {
+      this.displayedColumns.push('register');
+    }
+    
+    if(this.user!=null)
+    {if(""+this.user.isAdmin==='true')
+     {
+      this.isAdmin=Boolean(true);
+      this.displayedColumns.push('edit','delete');
+     }
+    else if(""+this.user.isAdmin==='false')
+     {
+      this.isAdmin=Boolean(false);
+     } 
+     this.displayedColumns.push('registeredKids');
+    }
+   
+  }
 
   ngOnInit(): void {
     this.campsService

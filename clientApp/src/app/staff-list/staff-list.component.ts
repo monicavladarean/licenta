@@ -13,7 +13,6 @@ import { finalize } from 'rxjs/operators';
 })
 export class StaffListComponent implements OnInit {
   displayedColumns = [
-    'id',
     'username',
     'lastName',
     'firstName',

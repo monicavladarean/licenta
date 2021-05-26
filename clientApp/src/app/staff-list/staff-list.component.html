@@ -7,12 +7,6 @@
 
 <table mat-table [dataSource]="staffItems" matSort class="mat-elevation-z8" >
 
-    <!-- ID Column  -->
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
     <!-- Username Column  -->
     <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef> Username </th>
