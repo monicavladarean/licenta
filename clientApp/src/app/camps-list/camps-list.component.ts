@@ -21,6 +21,7 @@ export class CampsListComponent implements OnInit {
   userType: string;
 
   displayedColumns = [
+    'image',
     'name',
     'category',
     'location',
@@ -47,7 +48,7 @@ export class CampsListComponent implements OnInit {
     {
       this.displayedColumns.push('register');
     }
-    
+
     if(this.user!=null)
     {if(""+this.user.isAdmin==='true')
      {
@@ -98,6 +99,38 @@ export class CampsListComponent implements OnInit {
   showCampDetails(id:number)
   {
     this.router.navigate(['/campDetails/'+id]);
+  }
+
+  chooseImage(category: string) {
+    if(category == 'horseriding') 
+     {
+       return "assets/images/horseriding.jpg";
+     }
+    else if(category == 'swimming')
+    {
+      return "assets/images/swimming.jpg"
+    }
+    else if(category == 'biking')
+    {
+      return "assets/images/biking.jpg"
+    }
+    else if(category == 'hiking')
+    {
+      return "assets/images/hiking.jpg"
+    }
+    else if(category == 'dance')
+    {
+      return "assets/images/dance.jpg"
+    }
+    else if(category == 'cooking')
+    {
+      return "assets/images/cooking.jpg"
+    }
+    else if(category == 'language')
+    {
+      return "assets/images/language.jpg"
+    }
+    return "";
   }
 
 }

@@ -12,7 +12,7 @@
     <a class="nav-item nav-link" routerLink="/addStaff" routerLinkActive="active" *ngIf="user && isAdmin">Add new employee</a>
     <a class="nav-item nav-link" routerLink="/addCamp" routerLinkActive="active" *ngIf="user && isAdmin">Add new camp</a>
 
-    <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!user" >Staff log in</a>
+    <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!user && userType=='null'" >Staff log in</a>
     <a class="nav-item nav-link" routerLink="" routerLinkActive="active" (click)="logout()" *ngIf="user" >Log out</a>
 
     </nav>

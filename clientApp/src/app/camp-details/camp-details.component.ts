@@ -15,12 +15,16 @@ export class CampDetailsComponent implements OnInit {
 
   id:number;
   element: Camp;
+  userType: string;
 
   constructor(
     private router:Router,
     private route: ActivatedRoute,
-    private campsService: CampsService
-    ) { }
+    private campsService: CampsService,
+    
+    ) {
+      this.userType = sessionStorage.getItem('userType');
+     }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];

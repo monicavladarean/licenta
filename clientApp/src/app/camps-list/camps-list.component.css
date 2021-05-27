@@ -1,7 +1,17 @@
 table {
     width: 100%;
+    text-align:center;
   }
+
+  th.mat-header-cell{
+    text-align:center;
+}
 
 tr.mat-row:hover {
     background: rgb(197, 193, 193);
+  }
+
+img {
+    border-radius: 8px;
+    width: 150px;
   }

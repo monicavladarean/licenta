@@ -1,7 +1,7 @@
 <app-navigation-menu></app-navigation-menu>
 
 <div align="center"> <h3>{{element.name}} </h3></div>
-<div align="center">
+<div align="center" *ngIf="userType=='adult'|| userType=='staff'">
     <button  class="btn btn-primary" (click)="register()">
         Register to this camp
     </button>

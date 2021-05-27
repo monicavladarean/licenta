@@ -6,6 +6,8 @@ import { finalize } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Registration } from '../models/registration';
 import { RegistrationsService} from '../services/registrations.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Staff } from '../models/staff';
 
 @Component({
   selector: 'app-registrations-for-camp',
@@ -23,16 +25,33 @@ export class RegistrationsForCampComponent implements OnInit {
     'information',
     'email',
     'registrationDate',
-    'actions',
-    'remove'
   ];
   registrationItems: Registration[];
   campId:number;
   isLoading: boolean;
+  user: Staff;
+  isAdmin: boolean = false;
+  userType:string;
 
   constructor(private registrationsService:RegistrationsService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private authenticationService: AuthenticationService) { 
+      this.authenticationService.user.subscribe((x) => (this.user = x));
+
+      this.userType = sessionStorage.getItem('userType');
+
+      if (this.user != null) {
+        if ('' + this.user.isAdmin === 'true') {
+          this.isAdmin = Boolean(true);
+          this.displayedColumns.push('actions');
+          this.displayedColumns.push('remove');
+        } else if ('' + this.user.isAdmin === 'false') {
+          this.isAdmin = Boolean(false);
+        }
+      }
+      
+    }
 
   ngOnInit(): void {
 
