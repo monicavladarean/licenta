@@ -1,10 +1,20 @@
 table {
-    width: 100%;
+    width: 90%;
     text-align:center;
   }
 
   th.mat-header-cell{
     text-align:center;
+    
+}
+
+.adultTable{
+margin-left: auto;
+margin-right: auto;
+}
+
+.childTable{
+    margin-right: auto;
 }
 
 tr.mat-row:hover {

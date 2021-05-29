@@ -27,8 +27,7 @@ export class CampsListComponent implements OnInit {
     'location',
     'startDate',
     'duration',
-    'minAge',
-    'maxAge',
+    'ages',
   ];
   campItems: Camp[];
 

@@ -1,0 +1,15 @@
+.adult{
+    background-image: url("/assets/images/homePageAdult.jpg");
+  height: 92%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+.child{
+    background-image: url("/assets/images/homePageChild.jpg");
+    height: 92%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
