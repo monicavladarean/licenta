@@ -9,7 +9,7 @@
                         <h2>Edit registration</h2>
                     </div>
 
-                    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="editForm" (ngSubmit)="onSubmit(this.element.campId)">
                         <div class="form-group row">
 
                             <div class="col-sm-6">
@@ -131,9 +131,8 @@
                         </div>
 
                         <div align="center">
-                            <a href="#" class="nav-item nav-link" routerLink="/campsList"
-                                routerLinkActive="active">Cancel and go to
-                                camps list</a>
+                            <a href="#" class="nav-item nav-link" routerLink="/registrationsForCamp/{{this.element.campId}}"
+                                routerLinkActive="active">Cancel and go back to the registrations</a>
                         </div>
 
                     </form>

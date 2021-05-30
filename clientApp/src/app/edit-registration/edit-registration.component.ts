@@ -52,7 +52,7 @@ export class EditRegistrationComponent implements OnInit {
 
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/campsList';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/registrationsForCamp/';
   }
 
   
@@ -75,7 +75,7 @@ prepareForm()
   // convenience getter for easy access to form fields
   get f() { return this.editForm.controls; }
 
-  onSubmit() {
+  onSubmit(campId:Number) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -88,7 +88,7 @@ prepareForm()
         .pipe(first())
         .subscribe(
             data => {
-                this.router.navigate([this.returnUrl]);
+                this.router.navigate([this.returnUrl+campId]);
             },
             error => {
                 this.error = "Wrong input data";
