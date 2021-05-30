@@ -1,6 +1,113 @@
 <app-navigation-menu></app-navigation-menu>
 
-<div>
-    <p>company-details works!</p>
+<div *ngIf="userType!='child'; else elseBlock">
+    <div class="card mb-3">
+        <div class="card-body" align="center">
+            <h3>Adventure Camps - about us</h3>
+        </div>
+        <img class="card-img-top" src="/assets/images/aboutPageAdultStory.jpg">
+        <div class="card-body row ">
+            <div class="col-sm-6 border-right">
+                <h4 class="card-title">Our story</h4>
+                <p class="card-text"></p>
+                <p class="card-text text-justify">We started organizing summer camps for children 10 years ago, when we
+                    made our first project:
+                    a hiking camp for 6-12 year old children. We started as a team of 4 people that love kids,
+                    adventures and
+                    spending time in nature, our concern being that children don't spend as much time as needed outdoor,
+                    doing sports
+                    and socialising with other kids.
+                    So, we created <b>Adventure Camps</b>, a place where having fun while spending time outdoor is the
+                    main purpose. In each
+                    of our camps, children develop many abilities, from cooking or debating on a subject, to easily
+                    socialize and
+                    be independent.
+                </p>
+                <p class="text-justify">
+                    Now, we are a big team of children loving people trained to make every kid's experience the best one
+                    possible,
+                    our staff participating every year at a one week training session with children psichologists, camp
+                    conseilours
+                    and planty of specialists in kids development, in order to assure the best quality for our camps!
+                </p>
+            </div>
+            <div class="col-sm">
+                <h4 class="card-title">Priorities and goals</h4>
+                <p class="card-text"></p>
+                <p class="card-text text-justify">
+                    For us, the most important things are children's <b>safety</b> and <b>fun</b>! Our motto is "healthy
+                    kids are happy kids",
+                    so our main priority is the wellbeing of all our participants, indifferent on the camp we are
+                    talking about.
+                </p>
+
+                <p class="text-justify">Besides the phisical condition of the children, we are constantly working on
+                    their psihical development, moral rules
+                    being extremly important for us. In our camps, kids learn to communicate, state their opinions in
+                    any situation and
+                    be conscious that all the people arround them are important.
+                </p>
+                <div align="center ">
+                    <img src="/assets/images/aboutPageAdult2.jpg" width="35%" ALIGN="right" HSPACE="10">
+                </div>
+
+                <p class="text-justify">Fun is present in all the camps, being the purpose kids love <b>Adventure
+                        Camps</b>,
+                    based on their feedbacks! So, if you want to give your child an unique experience, where everything
+                    is created in
+                    order for him to have the best time of his summer, we're waiting for your registration!
+                </p>
+
+            </div>
+        </div>
+        <br>
+
+        <div class="card-body " align="center">
+            <h4 class="card-title">Types of camps that we organize </h4>
+            <br>
+            <div align="center ">
+                <img src="/assets/images/aboutPageAdult3.jpg" width="25%" ALIGN="left" HSPACE="10">
+            </div>
+            <p class="card-text text-justify"> Based on our experience and permanently listening to our partisipants and
+                their
+                wishes, we organize different categories of camps, having different themes and included activities. In
+                this way,
+                we ca satisfy every child and offer to each of our participants a memorable experience and a camp in
+                which everyone
+                can be with people that have the same interests, this also being the reason why <b>Adventure Camps</b>
+                has
+                staff members passionate about the themes that the camps have, in order to provide the best knowledge
+                and
+                energy possible.
+
+            </p>
+            <p class="text-justify">
+                We are permanently making researches to find out what kids really want from a summer camp, such that we
+                can offer the the best holiday
+                and give them the oportunity to practice the sports and activities that they love or want to learn.
+            </p>
+            <p class="text-justify">
+                At the moment, we are organizing the following themed summer camps, as follows: <b> horse riding</b>
+                camps,
+                <b> swimming</b> camps, <b> hiking</b> camps,<b> biking </b> camps, <b> dance</b> camps,
+                <b> cooking </b> camps and <b> language</b> camps.
+            </p>
+
+        </div>
+
+        <div class="card-body" align="right">
+            <h5 class="card-title" style="margin-right: 150px">Contact details:</h5>
+
+            <p><b>E-mail:</b> contact@adventureCamps.com</p>
+
+            <p style="margin-right: 57px"><b>Phone number:</b> +40738219374</p>
+        </div>
+
+    </div>
 </div>
 
+<ng-template #elseBlock>
+
+    child
+
+</ng-template>

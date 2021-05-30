@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyDetailsComponent implements OnInit {
 
-  constructor() { }
+  userType:string;
+
+  constructor() {
+    this.userType = sessionStorage.getItem('userType');
+   }
 
   ngOnInit(): void {
   }
