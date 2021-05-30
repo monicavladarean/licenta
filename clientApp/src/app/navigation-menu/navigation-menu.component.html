@@ -1,11 +1,16 @@
 <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
 
     <a class="nav-item nav-link" routerLink="" routerLinkActive="active" *ngIf="!user && userType!='null'" (click)="deleteUser()">ChangeUserType</a>
 
-    <a class="nav-item nav-link" routerLink="/homePage" routerLinkActive="active" *ngIf="userType!='null'">Home</a>
-    <a class="nav-item nav-link" routerLink="/companyDetails" routerLinkActive="active" *ngIf="userType!='null'">About us</a>
-    <a class="nav-item nav-link" routerLink="/campsList" routerLinkActive="active" *ngIf="userType!='null'">Our camps</a>
+    <a class="nav-item nav-link" routerLink="/homePage" routerLinkActive="active" *ngIf="userType!='null'">Home <span class="material-icons" *ngIf="userType=='child'">
+        home </span></a>
+    <a class="nav-item nav-link" routerLink="/companyDetails" routerLinkActive="active" *ngIf="userType!='null'">About us <span class="material-icons" *ngIf="userType=='child'">
+        info
+        </span></a>
+    <a class="nav-item nav-link" routerLink="/campsList" routerLinkActive="active" *ngIf="userType!='null'">Our camps <span class="material-icons" *ngIf="userType=='child'">
+        explore
+        </span></a>
 
     <a class="nav-item nav-link" routerLink="/staffList" routerLinkActive="active" *ngIf="user && isAdmin">Staff list</a>
 

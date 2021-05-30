@@ -30,14 +30,7 @@ export class CampsListComponent implements OnInit {
     'ages',
   ];
   campItems: Camp[];
-
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
-  //@ViewChild(MatSort) sort: MatSort;
-
-  //selection = new SelectionModel<InventoryItem>(true, []);
   isLoading: boolean;
-  //activeOnly$=new BehaviorSubject(false);
-  //itemsCount = 0;
 
   constructor(private campsService: CampsService, private router: Router,private authenticationService: AuthenticationService) { 
     this.authenticationService.user.subscribe((x) => (this.user = x));
@@ -60,6 +53,7 @@ export class CampsListComponent implements OnInit {
      } 
      this.displayedColumns.push('registeredKids');
     }
+
    
   }
 
@@ -78,6 +72,7 @@ export class CampsListComponent implements OnInit {
     .subscribe(
       (data) => { 
         this.campItems = JSON.parse(""+data);
+        this.campItems.forEach(camp => {if(new Date(camp.startDate) <= new Date()) this.campItems.splice(this.campItems.indexOf(camp),1)});
         this.isLoading = false;
       },
       (error) => {
@@ -119,7 +114,7 @@ export class CampsListComponent implements OnInit {
     }
     else if(category == 'dance')
     {
-      return "assets/images/dance.jpg"
+      return "assets/images/dance.jpeg"
     }
     else if(category == 'cooking')
     {
