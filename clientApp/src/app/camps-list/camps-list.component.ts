@@ -33,6 +33,7 @@ export class CampsListComponent implements OnInit {
   isLoading: boolean;
 
   constructor(private campsService: CampsService, private router: Router,private authenticationService: AuthenticationService) { 
+    
     this.authenticationService.user.subscribe((x) => (this.user = x));
     this.userType = sessionStorage.getItem('userType');
 

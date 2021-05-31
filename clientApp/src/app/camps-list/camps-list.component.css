@@ -1,11 +1,13 @@
 table {
     width: 90%;
     text-align:center;
+    background-color: rgb(249, 252, 251);
   }
 
   th.mat-header-cell{
     text-align:center;
-    
+    color: rgb(31, 184, 176);
+    background-color: mintcream;
 }
 
 .adultTable{
@@ -18,10 +20,26 @@ margin-right: auto;
 }
 
 tr.mat-row:hover {
-    background: rgb(197, 193, 193);
+    background: rgb(151, 229, 227);
+    cursor: pointer;
   }
 
 img {
     border-radius: 8px;
     width: 150px;
   }
+
+button:hover{
+    filter:brightness(90%);
+    cursor:pointer;
+}
+
+button{
+    width:100px;
+    position: fixed;
+    z-index: 2;
+    border-radius: 50%;
+    outline: none;
+    background-color:  mintcream;
+    color:rgb(26, 168, 161);
+}
