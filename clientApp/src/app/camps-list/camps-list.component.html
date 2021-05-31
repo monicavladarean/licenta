@@ -5,9 +5,25 @@
         <mat-spinner></mat-spinner>
     </div>
 
-    <button onclick="window.scrollBy(0, -100)" style="left:92.5%; top: 17%;" *ngIf="userType=='child'"><mat-icon>arrow_upward</mat-icon> <br> scroll</button>
+    <button onclick="window.scrollBy(0, -100)" style="left:92.5%; top: 17%;     width:100px;
+    position: fixed;
+    z-index: 2;
+    border-radius: 50%;
+    outline: none;
+    background-color:  mintcream;
+    color:rgb(26, 168, 161);" *ngIf="userType=='child'">
+        <mat-icon>arrow_upward</mat-icon> <br> scroll
+    </button>
 
-    <button onclick="window.scrollBy(0, 100)" style="left:92.5%; top: 85%;" *ngIf="userType=='child'">scroll <br> <mat-icon>arrow_downward</mat-icon></button>
+    <button onclick="window.scrollBy(0, 100)" style="left:92.5%; top: 85%;     width:100px;
+    position: fixed;
+    z-index: 2;
+    border-radius: 50%;
+    outline: none;
+    background-color:  mintcream;
+    color:rgb(26, 168, 161);" *ngIf="userType=='child'">scroll <br>
+        <mat-icon>arrow_downward</mat-icon>
+    </button>
 
     <table mat-table [dataSource]="campItems" matSort class="mat-elevation-z8"
         [ngStyle]="{'margin-left': userType!='child' ? 'auto' : (userType=='child' ? '' : null) , 'margin-right' : userType!='child' ? 'auto' : (userType=='child' ? '' : null) }">
@@ -95,7 +111,7 @@
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>

@@ -34,12 +34,3 @@ button:hover{
     cursor:pointer;
 }
 
-button{
-    width:100px;
-    position: fixed;
-    z-index: 2;
-    border-radius: 50%;
-    outline: none;
-    background-color:  mintcream;
-    color:rgb(26, 168, 161);
-}
