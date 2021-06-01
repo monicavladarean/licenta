@@ -20,6 +20,18 @@ export class CampsListComponent implements OnInit {
   isAdmin: boolean = false;
   userType: string;
 
+  categories: String[] = [
+    'all',
+    'biking',
+    'cooking',
+    'dance',
+    'hiking',
+    'horseriding',
+    'language',
+    'swimming'
+  ];
+  selectedCategory:String = 'all';
+
   displayedColumns = [
     'image',
     'name',
@@ -60,7 +72,7 @@ export class CampsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.campsService
-      .getAllCamps()
+      .getAllCamps('')
       .subscribe(
         ()=>this.fetchData()
       );
@@ -69,7 +81,7 @@ export class CampsListComponent implements OnInit {
   fetchData() {
     this.isLoading = true;
     this.campsService
-    .getAllCamps()
+    .getAllCamps(this.selectedCategory)
     .subscribe(
       (data) => { 
         this.campItems = JSON.parse(""+data);

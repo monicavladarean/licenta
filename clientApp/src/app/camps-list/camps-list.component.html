@@ -1,5 +1,27 @@
 <app-navigation-menu></app-navigation-menu>
 
+<div align="right" [ngStyle]="{'margin-right': userType!='child' ? '80px' : (userType=='child' ? '150px' : null),'margin-top': userType!='child' ? '10px' : (userType=='child' ? '10px' : null)}">
+<mat-form-field [style.width.px]=200>
+    <mat-label for="category" style="color: rgb(26, 168, 161)"> Filter by category: </mat-label>
+    <mat-select  [(ngModel)]="selectedCategory" (selectionChange)="fetchData()">
+        <mat-option *ngFor="let category of categories" [value]="category">
+            <div [ngStyle]="{'font-weight': category.match('all') ? '500' : 'normal'}">
+            
+            <img src="assets/images/language.jpg" *ngIf="category.match('language') && userType=='child'" style="height:44px; width:auto;" >
+            <img src="assets/images/dance.jpeg" *ngIf="category.match('dance') && userType=='child'" style="height:42px; width:auto;">
+            <img src="assets/images/cooking.jpg" *ngIf="category.match('cooking') && userType=='child'" style="height:50px; width:auto;">
+            <img src="assets/images/biking.jpg" *ngIf="category.match('biking') && userType=='child'" style="height:50px; width:auto;">
+            <img src="assets/images/hiking.jpg" *ngIf="category.match('hiking') && userType=='child'" style="height:50px; width:auto;">
+            <img src="assets/images/horseriding.jpg" *ngIf="category.match('horseriding') && userType=='child'" style="height:50px; width:auto;">
+            <img src="assets/images/swimming.jpg" *ngIf="category.match('swimming') && userType=='child'" style="height:50px; width:auto;">
+             {{category}}
+             </div>
+
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+</div>
+
 <div>
     <div class="spinner-container" *ngIf="isLoading">
         <mat-spinner></mat-spinner>

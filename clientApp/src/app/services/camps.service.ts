@@ -73,8 +73,15 @@ export class CampsService {
     });
   }
 
-  getAllCamps() {
-    return this.httpClient.get<Camp[]>(`${environment.apiUrl}/camps`);
+  getAllCamps(campCategory: String) {
+    if (campCategory != '' && campCategory != null && campCategory != 'all')
+      return this.httpClient.get<Camp[]>(
+        `${environment.apiUrl}/camps/?category=` + campCategory
+      );
+    else
+      return this.httpClient.get<Camp[]>(
+        `${environment.apiUrl}/camps/`
+      );
   }
 
   getCampById(id: number) {

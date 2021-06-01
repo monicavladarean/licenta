@@ -33,4 +33,7 @@ button:hover{
     filter:brightness(90%);
     cursor:pointer;
 }
-
+  
+  ::ng-deep .mat-select-panel {
+    max-height: 80vh !important;
+  }
