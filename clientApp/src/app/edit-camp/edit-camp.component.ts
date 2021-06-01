@@ -20,6 +20,16 @@ export class EditCampComponent implements OnInit {
   error = '';
   element: Camp;
 
+  categories: String[] = [
+    'hiking',
+    'biking',
+    'horseriding',
+    'swimming',
+    'dance',
+    'cooking',
+    'language'
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,

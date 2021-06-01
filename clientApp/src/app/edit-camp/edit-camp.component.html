@@ -1,18 +1,20 @@
 <app-navigation-menu></app-navigation-menu>
+<div style="background-image: url('assets/images/formBackground.jpg'); -webkit-background-size: cover;background-size: cover;">
 
 <div class="container">
-    <div class="row justify-content-center align-items-center" style="height:100vh">
-        <div class="col-4">
+    <div class="row justify-content-center align-items-center" style="padding:25px">
+        <div class="col-10">
             <div class="card">
                 <div class="card-body">
                     <div align="center">
                         <h2>Edit Camp</h2>
                     </div>
 
+
                     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
                         <div class="form-group row">
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label for="name">
                                     Camp name:
                                 </label>
@@ -23,7 +25,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label for="location">
                                     Location:
                                 </label>
@@ -33,69 +35,78 @@
                                     <div *ngIf="f.location.errors.required">Location is required</div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="category">
-                                Category:
-                            </label>
-                            <input id="category" type="text" class="form-control" formControlName="category"
-                                [ngClass]="{ 'is-invalid': submitted && f.category.errors }" />
-                            <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
-                                <div *ngIf="f.category.errors.required">Category is required</div>
+
+
+                            <div class="col-sm-4">
+                                <mat-form-field [style.width.px]=250>
+                                    <mat-label for="category"> Category: </mat-label>
+                                    <mat-select input id="category" type="text" style="border:none"
+                                        class="form-control" formControlName="category"
+                                        [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                                        <mat-option *ngFor="let category of categories" [value]="category">
+                                            {{category}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                                        <div *ngIf="f.category.errors.required">Category is required</div>
+                                    </div>
+                                </mat-form-field>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="description">
-                                Description:
-                            </label>
-                            <input id="description" type="text" class="form-control" formControlName="description"
-                                [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
-                            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                                <div *ngIf="f.description.errors.required">Description is required</div>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="schedule">
-                                Schedule:
-                            </label>
-                            <input id="schedule" type="text" class="form-control" formControlName="schedule"
-                                [ngClass]="{ 'is-invalid': submitted && f.schedule.errors }" />
-                            <div *ngIf="submitted && f.schedule.errors" class="invalid-feedback">
-                                <div *ngIf="f.schedule.errors.required">Schedule is required</div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="requiredEquipment">
-                                Required equipment:
-                            </label>
-                            <input id="requiredEquipment" type="text" class="form-control"
-                                formControlName="requiredEquipment"
-                                [ngClass]="{ 'is-invalid': submitted && f.requiredEquipment.errors }" />
-                            <div *ngIf="submitted && f.requiredEquipment.errors" class="invalid-feedback">
-                                <div *ngIf="f.requiredEquipment.errors.required">Required equipment is
-                                    required</div>
-                            </div>
-                        </div>
 
                         <div class="form-group row">
 
-                            <div class="col-sm-6">
-                                <label for="startDate">
-                                    Start date:
+                            <div class="col-sm-8">
+                                <label for="schedule">
+                                    Schedule:
                                 </label>
-                                <input id="startDate" type="text" class="form-control" formControlName="startDate"
-                                    [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
-                                <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
-                                    <div *ngIf="f.startDate.errors.required">Start date is required
-                                    </div>
+                                <input id="schedule" type="text" class="form-control" formControlName="schedule"
+                                    [ngClass]="{ 'is-invalid': submitted && f.schedule.errors }" />
+                                <div *ngIf="submitted && f.schedule.errors" class="invalid-feedback">
+                                    <div *ngIf="f.schedule.errors.required">Schedule is required</div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
+                                <label for="requiredEquipment">
+                                    Required equipment:
+                                </label>
+                                <input id="requiredEquipment" type="text" class="form-control"
+                                    formControlName="requiredEquipment"
+                                    [ngClass]="{ 'is-invalid': submitted && f.requiredEquipment.errors }" />
+                                <div *ngIf="submitted && f.requiredEquipment.errors" class="invalid-feedback">
+                                    <div *ngIf="f.requiredEquipment.errors.required">Required equipment is
+                                        required</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-4">
+
+                                <mat-form-field [style.width.px]=250>
+                                    <mat-label>Starting date:</mat-label>
+
+                                    <input matInput [matDatepicker]="picker" id="startDate" type="text"
+                                        class="form-control" formControlName="startDate"
+                                        [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.startDate.errors.required">Start date is required
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-sm-4">
                                 <label for="duration">
                                     Duration:
                                 </label>
@@ -106,10 +117,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label for="capacity">
                                     Capacity:
                                 </label>
@@ -121,22 +130,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <label for="price">
-                                    Price/child:
-                                </label>
-                                <input id="price" type="text" class="form-control" formControlName="price"
-                                    [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
-                                <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
-                                    <div *ngIf="f.price.errors.required">Price is
-                                        required</div>
-                                </div>
-                            </div>
                         </div>
-
                         <div class="form-group row">
 
-                            <div class="col-sm-6">
+
+
+                            <div class="col-sm-4">
                                 <label for="minAge">
                                     Minimum age:
                                 </label>
@@ -148,7 +147,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <label for="maxAge">
                                     Maximum age:
                                 </label>
@@ -160,6 +159,38 @@
                                 </div>
 
                             </div>
+                            <div class="col-sm-4">
+                                <label for="price">
+                                    Price/child:
+                                </label>
+                                <input id="price" type="text" class="form-control" formControlName="price"
+                                    [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                                <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                                    <div *ngIf="f.price.errors.required">Price is
+                                        required</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <label for="description">
+                                    Description:
+                                </label>
+                                <input id="description" type="text" class="form-control"
+                                    formControlName="description"
+                                    [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+                                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                    <div *ngIf="f.description.errors.required">Description is required</div>
+                                </div>
+                            </div>
+
+
+
                         </div>
 
                         <div align="center">
@@ -183,4 +214,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -1,7 +1,8 @@
 <app-navigation-menu></app-navigation-menu>
+<div style="background-image: url('assets/images/formBackground.jpg'); -webkit-background-size: cover;background-size: cover;">
 
 <div class="container">
-    <div class="row justify-content-center align-items-center" style="height:100vh">
+    <div class="row justify-content-center align-items-center" style="padding:25px">
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
@@ -49,11 +50,19 @@
                             </div>
                         </div>
 
+
+
                         <div class="form-group">
-                            <label for="isAdmin">
-                                Is admin (true/false): 
-                            </label>
-                            <input id="isAdmin" type="text" formControlName="isAdmin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.isAdmin.errors }" />
+                            <mat-radio-group id="isAdmin" style="border:none;" formControlName="isAdmin"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.isAdmin.errors }">
+                                <label for="isAdmin">
+                                    Admin rights:
+                                </label>
+                                <mat-radio-button color="primary" input style="margin-left: 16px;" value="true"> yes
+                                </mat-radio-button>
+                                <mat-radio-button color="primary" input style="margin-left: 16px;" value="false"> no
+                                </mat-radio-button>
+                            </mat-radio-group>
                             <div *ngIf="submitted && f.isAdmin.errors" class="invalid-feedback">
                                 <div *ngIf="f.isAdmin.errors.required">Is admin (true/false) is required</div>
                             </div>
@@ -77,4 +86,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -18,6 +18,16 @@ export class AddCampComponent implements OnInit {
   returnUrl: string;
   error = '';
 
+  categories: String[] = [
+    'hiking',
+    'biking',
+    'horseriding',
+    'swimming',
+    'dance',
+    'cooking',
+    'language'
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -72,3 +82,4 @@ console.log("submited");
 }
 
 }
+

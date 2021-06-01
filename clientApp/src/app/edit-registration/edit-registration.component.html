@@ -1,8 +1,9 @@
 <app-navigation-menu></app-navigation-menu>
+<div style="background-image: url('assets/images/formBackground.jpg'); -webkit-background-size: cover;background-size: cover;">
 
 <div class="container">
-    <div class="row justify-content-center align-items-center" style="height:100vh">
-        <div class="col-4">
+    <div class="row justify-content-center align-items-center" style="padding:25px">
+        <div class="col-8">
             <div class="card">
                 <div class="card-body">
                     <div align="center">
@@ -35,15 +36,29 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="dateOfBirth">
-                                Child's date of brith:
-                            </label>
-                            <input id="dateOfBirth" type="text" class="form-control" formControlName="dateOfBirth"
-                                [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" />
-                            <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
-                                <div *ngIf="f.description.errors.required">Child's date of brith is required</div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <mat-form-field [style.width.px]=310>
+                                    <mat-label>Child's birth date:</mat-label>
+                                
+                                <input matInput [matDatepicker]="picker" id="dateOfBirth" type="text" class="form-control" formControlName="dateOfBirth"
+                                    [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }"/>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
+                                    <div *ngIf="f.dateOfBirth.errors.required">Child's date of brith is required</div>
+                                </div>
+                                </mat-form-field>
                             </div>
+    
+                            <div class="col-sm-6">
+                                <label for="category">
+                                    Child's email:
+                                </label>
+                                <input id="email" type="text" class="form-control" formControlName="email"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                            </div>
+    
                         </div>
 
                         <div class="form-group">
@@ -113,14 +128,6 @@
                             </div>
                     </div>
 
-                        <div class="form-group">
-                            <label for="category">
-                                Child's email:
-                            </label>
-                            <input id="email" type="text" class="form-control" formControlName="email"
-                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                        </div>
-
                         <div align="center">
                             <button [disabled]="loading" class="btn btn-primary">
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
@@ -141,4 +148,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
