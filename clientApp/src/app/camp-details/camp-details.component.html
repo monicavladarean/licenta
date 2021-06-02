@@ -20,7 +20,7 @@
         
         <div class="col-sm-8">
             <br><br><br>
-            <br><br><br>
+            <br>
                 <div>
                     <p class="card-text text-justify" >
                         <mat-icon>check_circle_outline</mat-icon><b>Description:</b> {{element.description}}
@@ -31,7 +31,98 @@
                     <p class="card-text text-justify">
                         <mat-icon>check_circle_outline</mat-icon><b>Required equipment:</b> {{element.requiredEquipment}}
                     </p>
+                    <br>
                    
+                </div>
+                <div class="row" *ngIf="element.category.match('language')">
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/language1.jpg" style="height:130px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/language2.jpg" style="height:130px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/language3.jpg" style="height:130px; width:auto;" >
+                    </div>
+                    
+                </div>
+
+                <div class="row" *ngIf="element.category.match('swimming')">
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/swimming1.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/swimming2.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/swimming3.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    
+                </div>
+
+                <div class="row" *ngIf="element.category.match('dance')">
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/dance2.jpg" style="height:130px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/dance1.jpg" style="height:130px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/dance3.jpg" style="height:130px; width:auto;" >
+                    </div>
+                    
+                </div>
+
+                <div class="row" *ngIf="element.category.match('hiking')">
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/hiking3.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/hiking2.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/hiking1.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    
+                </div>
+
+                <div class="row" *ngIf="element.category.match('biking')">
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/biking2.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/biking3.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/biking1.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    
+                </div>
+
+                <div class="row" *ngIf="element.category.match('cooking')">
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/cooking2.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/cooking1.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/cooking3.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    
+                </div>
+
+                <div class="row" *ngIf="element.category.match('horseriding')">
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/horseriding1.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/horseriding2.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="card-img-top" src="assets/images/horseriding3.jpg" style="height:160px; width:auto;" >
+                    </div>
+                    
                 </div>
         </div>
 
@@ -67,7 +158,6 @@
             </div>
 
             <br><br><br>
-            <br><br><br><br><br><br>
-
+            <br><br><br>
         </div>
   
