@@ -1,23 +1,73 @@
 <app-navigation-menu></app-navigation-menu>
+<div
+    style="background-image: url('assets/images/campDetailsBackground.jpg') ;-webkit-background-size: cover;background-size: cover;">
 
-<div align="center"> <h3>{{element.name}} </h3></div>
-<div align="center" *ngIf="userType=='adult'|| userType=='staff'">
-    <button  class="btn btn-primary" (click)="register()">
-        Register to this camp
-    </button>
-</div>
+    <div align="center" style="padding:25px">
+        <h2 style="color:rgb(4, 94, 89)">{{element.name}} </h2>
+        <h5> - a {{element.category}} camp - </h5>
+        <h5 *ngIf="userType=='staff'"> (for {{element.capacity}} kids)</h5>
+        <button style="border-radius: 50%;
+    border-color: black;
+    width:120px;
+    height:50px;
+    background-color:  rgb(67, 216, 209);
+    color:black;" class="btn btn-primary" (click)="register()" *ngIf="userType!='child'">
+            Register
+        </button>
 
-<mat-list role="list">
-	<mat-list-item role="listitem"><h5 class="mb-1">Category: </h5> <p class="mb-1">{{element.category}}</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Description: </h5> <p class="mb-1">{{element.description}}</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Location: </h5> <p class="mb-1">{{element.location}}</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Period: </h5> <p class="mb-1"> starting on {{element.startDate}}, ending on {{element.endDate}} ({{element.duration}} days in total)</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Ages: </h5> <p class="mb-1">between {{element.minAge}} and {{element.maxAge}}</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Schedule: </h5> <p class="mb-1">{{element.schedule}}</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Required equipment: </h5> <p class="mb-1">{{element.requiredEquipment}}</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Price: </h5> <p class="mb-1">{{element.price}}</p> </mat-list-item>
-    <mat-list-item role="listitem"><h5 class="mb-1">Number of participants: </h5> <p class="mb-1">{{element.capacity}}</p> </mat-list-item>
-</mat-list>
+    <div class="row" style="margin-left: 100px; margin-right: 70px;  margin-top: -25px;">
 
+        
+        <div class="col-sm-8">
+            <br><br><br>
+            <br><br><br>
+                <div>
+                    <p class="card-text text-justify" >
+                        <mat-icon>check_circle_outline</mat-icon><b>Description:</b> {{element.description}}
+                    </p>
+                    <p class="card-text text-justify">
+                        <mat-icon>check_circle_outline</mat-icon><b>Schedule:</b> {{element.schedule}}
+                    </p>
+                    <p class="card-text text-justify">
+                        <mat-icon>check_circle_outline</mat-icon><b>Required equipment:</b> {{element.requiredEquipment}}
+                    </p>
+                   
+                </div>
+        </div>
 
+        <div class="col-sm-4">
 
+            <div class="card " style="width: 20rem;">
+                <img class="card-img-top" src="assets/images/language.jpg" *ngIf="element.category.match('language')">
+                <img class="card-img-top" src="assets/images/dance.jpeg" *ngIf="element.category.match('dance') ">
+                <img class="card-img-top" src="assets/images/cooking.jpg" *ngIf="element.category.match('cooking') ">
+                <img class="card-img-top" src="assets/images/biking.jpg" *ngIf="element.category.match('biking') ">
+                <img class="card-img-top" src="assets/images/hiking.jpg" *ngIf="element.category.match('hiking') ">
+                <img class="card-img-top" src="assets/images/horseriding.jpg"
+                    *ngIf="element.category.match('horseriding')">
+                <img class="card-img-top" src="assets/images/swimming.jpg" *ngIf="element.category.match('swimming') ">
+
+                <div class="card-body" align="left" style="background-color: rgb(255, 255, 255);">
+
+                    <p class="card-text">
+                        <mat-icon>date_range</mat-icon> {{element.startDate}} - {{element.endDate}}
+                        ({{element.duration}}
+                        days)
+                    </p>
+                    <p class="card-text" >
+                        <mat-icon>people</mat-icon> {{element.minAge}} - {{element.maxAge}} year old kids
+                    </p>
+                    <p class="card-text">
+                        <mat-icon> location_on</mat-icon> {{element.location}}
+                    </p>
+                    <p class="card-text" align="right" style="font-size: 15px;">
+                        <mat-icon> attach_money </mat-icon>{{element.price}} RON
+                    </p>
+                </div>
+            </div>
+
+            <br><br><br>
+            <br><br><br><br><br><br>
+
+        </div>
+  
