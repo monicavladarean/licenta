@@ -3,8 +3,11 @@
     style="background-image: url('assets/images/campDetailsBackground.jpg') ;-webkit-background-size: cover;background-size: cover;">
 
     <div align="center" style="padding:25px">
-        <h2 style="color:rgb(4, 94, 89)">{{element.name}} </h2>
-        <h5> - a {{element.category}} camp - </h5>
+        <h2 style="color:rgb(4, 94, 89)"><img width="50" height="50" src="assets/images/languagesvg.svg" *ngIf="element.category.match('language') && userType=='child'"><img width="50" height="50" src="assets/images/horsesvg.svg" *ngIf="element.category.match('horseriding') && userType=='child'"><img width="50" height="50" src="assets/images/dancesvg.svg" *ngIf="element.category.match('dance') && userType=='child'"><img width="50" height="50" src="assets/images/swimmingsvg.svg" *ngIf="element.category.match('swimming') && userType=='child'"><img width="50" height="50" src="assets/images/hikingsvg.svg" *ngIf="element.category.match('hiking') && userType=='child'"><img width="50" height="50" src="assets/images/bikingsvg.svg" *ngIf="element.category.match('biking') && userType=='child'"><img width="50" height="50" src="assets/images/cookingsvg.svg" *ngIf="element.category.match('cooking') && userType=='child'">
+             {{element.name}} <img width="50" height="50" src="assets/images/languagesvg.svg" *ngIf="element.category.match('language') && userType=='child'"><img width="50" height="50" src="assets/images/horsesvg.svg" *ngIf="element.category.match('horseriding') && userType=='child'"><img width="50" height="50" src="assets/images/dancesvg.svg" *ngIf="element.category.match('dance') && userType=='child'"><img width="50" height="50" src="assets/images/swimmingsvg.svg" *ngIf="element.category.match('swimming') && userType=='child'"><img width="50" height="50" src="assets/images/hikingsvg.svg" *ngIf="element.category.match('hiking') && userType=='child'"><img width="50" height="50" src="assets/images/bikingsvg.svg" *ngIf="element.category.match('biking') && userType=='child'"><img width="50" height="50" src="assets/images/cookingsvg.svg" *ngIf="element.category.match('cooking') && userType=='child'">
+            </h2>
+        <h5> 
+         - a {{element.category}} camp - </h5>
         <h5 *ngIf="userType=='staff'"> (for {{element.capacity}} kids)</h5>
         <button style="border-radius: 50%;
     border-color: black;
@@ -158,6 +161,6 @@
             </div>
 
             <br><br><br>
-            <br><br><br>
+            <br><br><br><br>
         </div>
   
